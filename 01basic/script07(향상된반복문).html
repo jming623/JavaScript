@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        var arr = ['hong','park','kim',1,2,3,4];
+        //주의 - 배열이나 객체의 index,key값을 변수에 저장합니다.(배열의 index는 객체의 key값과 같다?)
+        var result = " ";
+        for(var i in arr){
+            result += "속성값:"+i+" 담긴값:"+arr[i] + "<br>";
+        }
+        document.write(result);
+
+        //js에서 객체선언은 {}(중괄호)를 통해 선언합니다.
+        var obj1 = {name:'홍길동' , age:20 , gender:'남성'}
+        
+        for(var i in obj1){
+            console.log(i, obj1[i]); //객체의 사용은 배열의 사용과 같다. 객체명[키값]
+        }
+    </script>
+
+</body>
+</html>

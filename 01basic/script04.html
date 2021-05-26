@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        var num1 = "10";
+        var num2 = 10;
+
+        console.log(num1 == num2); //true ==은 값자체만 비교
+        console.log(num1 === num2); // false ===은 값,데이터타입까지 비교
+        console.log(num1 != num2); //false
+        console.log(num1 !== num2); //true
+
+        var str1 = "홍길동";
+        var str2 = "홍길동";
+
+        console.log(str1 == str2);//문자열도 ==비교가능
+
+        //undefined, null의 비교
+
+        var a;
+        var b = null;
+ 
+        console.log(a == b); //true null값도 비교가능 
+        console.log(a === b); //false    
+
+        console.log(a,b,a==b); //undefined null true 자바와는 다르게(+없이) ,(콤마)로 값들을 순서대로 출력가능
+
+        //3항연산자
+
+        var x = 1;
+        var y = 2;
+
+        console.log(x > y ? "x가 큼" : 'y가 큼');
+    </script>
+
+</body>
+</html>

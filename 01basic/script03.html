@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        
+        var a = 10;
+        var b = 20;
+
+        a = 15; //보기엔 선언된 a값의 값을 바꾼거처럼 보이지만 script에서는 var를 생략가능하기 때문에 a라는 변수가 다시 선언되었다고 보는게 맞음.
+
+        document.write(a+"<br>");
+
+        var x = '20'; //문자선언
+        var y = 20; //숫자선언
+        
+        var result = x + y;
+        var result1 = 20 + y;
+        var result2 = 20 + x;
+        
+        //문자 + 숫자 = 문자
+        document.write(result+"<br>"); //2020
+        document.write(result1+"<br>"); // 40
+        document.write(result2+"<br>"); // 2020
+
+        /* 데이터 타입 (number, string, boolean, undefined, null ) */
+
+        //number
+        var num1 = 3.14;
+        var num2 = 3;
+
+        console.log(typeof num1);
+        console.log(typeof num2);
+
+        //string
+        var str1 = "문자"
+
+        console.log(typeof str1);
+
+        //boolean
+        var bool = true;  //0은 대표적으로 false를 표현하는 형식, 0을 제외한 나머지는 true
+        console.log(typeof bool);
+
+        //undefined
+        var un;
+        console.log(un);
+        console.log(typeof un);
+        
+        //null - 값은 저장했지만 존재하지 않을때 나타납니다.
+        var tag = document.getElementById("xxx");
+        
+        console.log(tag);
+        console.log(typeof tag);
+
+    </script>
+
+</body>
+</html>

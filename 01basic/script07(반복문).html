@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        var a = 1;
+
+        while(a <= 10){
+            console.log(a);
+            a++;
+        }
+
+        console.log("---------------------");
+
+        var arr = new Array();
+
+        console.log("배열에 for문으로 값 넣기");
+        for(var i = 1; i <= 10 ; i++){
+            arr.push(i);
+        }
+
+        console.log(arr.toString());
+
+        console.log("배열에 들어있는값 for문을 이용해서 순서대로 호출하기");
+        for(var i = 0; i < arr.length; i++){
+            console.log(arr[i]);
+        }
+
+        document.write("중첩 for문으로 구구단출력"+"<br><br>");
+
+        for(var i = 2; i <= 9 ; i++){
+            document.write("구구단"+i+"단"+"<br>");
+            for(var j = 1; j <=9 ; j++){
+                document.write(i+" * "+j+" = "+i*j+"<br>");
+            }
+            document.write("<br>");
+        }
+
+        document.write("중첩 while문으로 구구단출력"+"<br><br>");
+
+        var i = 2;
+        var j = 1;
+        while(i<=9){
+            document.write("구구단"+i+"단"+"<br>");
+            while(j<=9){
+                document.write(i+" * "+j+" = "+i*j+"<br>");
+                j++;
+            }
+            document.write("<br>");
+            i++;
+            j=1;
+        }
+
+    </script>
+
+</body>
+</html>

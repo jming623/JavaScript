@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        //메서드 호출 (JS에서는 함수의 호이스팅 기능을 제공(선언부가 호출부보다 아래쪽에 있더라도 미리 호출이 가능) )
+        method1();
+
+        method2(1,2); //3 정상적인 호출
+        method2();  //NaN 메서드에서 선언한 매개변수개수와 사용할때 매개변수개수가 달라도 호출은 일어남
+        method2(5); //Nan
+        method2(3,2,1); //5
+
+        var result = method3(10,20);
+        console.log(result);
+
+       
+
+        //메서드 선언
+        function method1(){
+            console.log(1);
+        }
+
+        function method2(a,b){ //메개변수는 타입없이 변수명만 적어주면 됨.
+            console.log("method2호출");
+            console.log(a+b);
+        }
+
+        //리턴
+        function method3(a,b){
+            console.log("method3호출");
+            var result = a + b;
+            
+            return result; //필요하면 선언 필요하지 않다면 선언하지 않아도 무관
+        }
+        
+        //변수에 함수 저장 method3()을 대입하면 method3이 리턴하는 값을 받아오는것이고, method3을 대입하면 메서드전체를 변수에 치환하는 것이다.
+        //함수가 담긴 변수는 함수와 똑같이 사용이 가능하다.
+        var c = method3;
+        console.log("c호출:"+c);
+
+        console.log("c의 타입"+typeof c);
+
+        var c = method3;
+        console.log("c호출:"+c(10,20) );
+
+        
+    </script>
+
+</body>
+</html>
