@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        //JS의 객체 JSON (Java Script Object Notation)
+    
+        var person = {
+            name : '홍길동',
+            age : 20,
+            arr : [1,2,3,4]
+        };
+
+        console.log(person);
+
+        //사용은 두가지 방법이 있습니다.
+        
+        // 객체명.KEY명칭
+        console.log(person.name);
+        console.log(person.age);
+        console.log(person.arr);
+        console.log(person.arr[0]);
+
+        // 객체명["KEY명칭"]
+        console.log(person["name"]);
+        console.log(person["age"]);
+        console.log(person["arr"]);
+        console.log(person["arr"][0]);
+
+        console.log("--------------------------------");
+
+        var exam = {kor : 80, eng : 60, math : 90};
+        var hong = {name : "홍길동" , exam : exam};
+
+        console.log(hong.name);
+        console.log(hong.exam);
+        
+        console.log(
+            hong.exam.kor,
+            hong.exam.eng,
+            hong.exam["math"] 
+        );
+
+        console.log(
+            hong["exam"]["kor"],
+            hong["exam"]["eng"],
+            hong["exam"]["math"]
+        );
+
+        //중첩for문으로 subject에 있는 값을 전부 출력하세요.
+    
+        var list = [ //list이름의 변수에 배열로 객체를 담는 형태
+            {
+                name : "홍길동",
+                age : 25,
+                subject: ["java","jsp","js"],
+                birth : 19970509
+            },
+            {
+                name : "이순신",
+                age : 27,
+                subject : ["CSS","DB"],
+                birth : 19950623
+            },
+
+            {
+                name : "신사임당",
+                age : 27,
+                subject : ["Git","JQuery"],
+                birth : 19950623
+            }
+        ];
+
+
+        for(var i = 0 ; i <= list.length ; i++){
+            for(var j = 0 ; j < list[i].subject.length ; j++){
+                console.log(list[i].subject[j]);
+            }
+        }
+
+        //
+        var obj = {
+            age : 10,
+            func : function(){ //객체안에 익명함수 선언
+                console.log("func");
+            }
+        }
+
+        console.log(obj.age);
+        console.log(obj.func);
+        obj.func();
+
+
+    </script>
+
+</body>
+</html>
