@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        //익명함수나 변수에 함수를 치환하는 방법은 호이스팅이 지원되지않는다.
+        
+
+        function method1(){
+            console.log("일반함수 실행");
+        }
+
+        var a = method1;
+
+
+        var b = function(){
+            console.log("익명함수 실행");
+        }
+
+        a();
+        
+        b();
+
+        var c = function(a,b){
+            console.log("익명함수2 실행");
+            return a+b;
+        }
+
+        console.log(c(10,20));
+
+        // 화살표함수(ES6)
+
+        var d = (a,b) => a+b; //단일문(한줄)은 중괄호 생략가능
+
+        console.log("화살표함수 d실행: "+d(10,20) );
+
+        
+        var e = (a,b) => { //단일문이 아닐경우 중괄호 
+            var ea = (a+b)/2;
+            return ea;
+        }
+
+        console.log("화살표함수 e실행: "+e(10,20) );
+
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        //var변수는 함수레벨 스코프(일반블럭 안에서 사용되는 변수도 전역변수로 취급함. 함수(function(){중괄호 안에서 선언된})에서만 지역변수가 적용됨)
+        num1 = 50;
+
+        if(true){ //자바에서는 if문 안에서 선언된 변수는 지역변수로 적용되어 밖에서 사용할 수 없으나 JS, var변수를 사용하면 if문안에서 선언되어도 전역변수로 적용되서 밖에서 호출이 가능함
+            var num1 = 60;
+        }
+
+        console.log(num1); // 60
+
+       
+        
+        var num2 = 100;
+        function  add(){ 
+            var num2 = 200; //함수내에서 사용되서 지역변수 취급 (밖에서 사용못함)
+        }
+
+        add();
+        console.log(num2); //100
+
+
+        /* -----let(ES6의 var) , const(EX6의 상수)  */
+        //let은 JS의 var변수의 문제점을 보완하기 위해 나온 ES6문법입니다.
+        //var변수는 같은이름을 가진 변수를 중복해서 선언이 가능했지만, let변수는 같은 이름을 가진 변수를 중복해서 선언할 수 없습니다.(자바와 동일)
+        //let은 블록 레벨 스코프로 모든블럭안에서 사용되는 변수가 모두 지역변수로 취급(밖에서 사용불가)
+
+        let num3 = 100; //전역변수
+        // let num3 = 200; 에러발생
+
+        if(true){
+            let num3 = 200; //지역변수
+        }
+
+        console.log(num3); //100
+      
+       
+        let num4 = 1000;
+
+        function add2() {
+            let num4 = 2000;
+        }
+
+        add2();
+        console.log(num4); //1000
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        var result = method(1,2,3,'a','홍길동');
+
+        console.log(result);
+
+
+        //JS에서 매개변수는 큰 의미가 없습니다. 단순히 인자값에 들어오는 것에 이름을 붙여사용하는 형태입니다.
+        function method(a,b){          
+
+            console.log("method함수 실행");
+            console.log(arguments);
+
+            //메서드에 전달되는 매개변수는 모두 arguments에 배열로 저장되고 arguments에 저장된 값은 [인덱스번호](대괄호)로 확인이 가능합니다.
+            console.log("arguments길이: "+arguments.length);
+            console.log("arguments 0번째:"+arguments[0]);
+            console.log("arguments 1번째:"+arguments[1]);
+            console.log("arguments 2번째:"+arguments[2]);
+            console.log("arguments 3번째:"+arguments[3]);
+            console.log("arguments 4번째:"+arguments[4]);
+
+            return a+b;
+        }
+
+    </script>
+
+</body>
+</html>

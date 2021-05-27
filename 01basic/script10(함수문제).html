@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        function check1(){
+            alert("자바스크립트 함수");
+        }
+       
+        var check2 = function(){
+            alert("자바스크립트 익명함수");
+        }
+
+        var check3 = () => alert("자바스크립트 화살표함수");
+
+        check1();
+        check2();
+        check3();
+
+        function method1(a){
+            if(a%2==0){
+                alert("짝수");
+            }else{
+                alert("홀수");
+            } 
+        }
+
+        method2 = (a) => {
+            if(a % 2 == 0){
+                alert("짝수");
+            }else{
+                alert("홀수");
+            }
+        }
+
+        method1(4);
+        method2(4);
+        
+
+        //3 이름, 국어, 수학, 영어 점수를 받아서 "(이름)님의 평균점수는 xx점입니다." 문자열을 반환하는 함수를 익명함수로 선언
+
+        function score1(a,b,c,d){
+            var avg = parseInt((b+c+d)/3);
+            alert(a+"님의 평균점수는"+avg+"점 입니다.");
+        }
+        
+        var score2 = (a,b,c,d) => {
+            var avg = parseInt((b+c+d)/3);
+            alert(a+"님의 평균점수는"+avg+"점 입니다.");
+        }
+        
+        score1("홍길동",90,80,70);
+        score2("홍길자",90,80,80);
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        //함수의 종류
+        // 1. 선언적 함수
+        function method1(){
+            document.write("선언적 함수" + "<br>")
+        }
+
+        var a = method1;
+        
+        a();
+
+        // 2. 익명함수
+        var b = function(){
+            document.write("익명 함수" + "<br>")
+        }
+        b();
+
+        // 3. 화살표함수
+        var c = () => document.write("화살표 함수" + "<br>");
+        c();
+
+        // 4. 즉시실행 함수
+        (function(){
+            document.write("즉시실행 함수" + "<br>")
+        })();
+
+        (function(a,b,c){
+            console.log(a,b,c);
+        })('김','이','박');
+
+        ///////////
+        function func1(){
+            console.log("1번");
+            return '1번';
+        }
+       
+        function func2(){
+            console.log("2번");
+            
+        }
+
+        var result = func1();
+        func2(result); //??
+
+        //사용이유 - 페이지에서 실행되는 초기값을 지정하거나, 초기에 순서대로 실행할 함수들을 정의하기 위해서
+        (function(){
+            var result1 = func1();
+            func2(result1); //??
+        })();
+      
+
+    </script>
+
+</body>
+</html>

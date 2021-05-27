@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        //함수안에서 선언된 지역변수를 밖에서 사용할 수 있게 도와주는 문법
+
+        function func1(){
+            var a = 1;
+        }//a의 범위는 여기서 끝
+
+        // console.log(a);//에러
+
+        //클로저
+
+        function method1(){
+            var b = '안녕~!';
+            
+            //JS에서는 함수안에서 새로운 함수를 선언할 수도 있다 (무한 중첩가능)
+            
+            var result1 = function(){
+                //이곳에서는 b함수를 사용할 수 있다.
+                console.log(b);
+            }
+
+            return result1; //result도 변수이기 때문에 return값으로 넣어줄 수 있다.
+        }
+
+        var c = method1();
+
+        console.log(c); 
+
+        console.log("-----------------");
+
+        //위의 메서드를 아래 처럼 선언할수도 있다.
+        function method2(){
+            var d = '안녕~!';
+            
+            return function(){ //JS함수는 실행환경의 상태를 기억한다.
+                return d;
+            };
+        }
+
+        //클로저 - 내부 익명 함수가 외부함수 method()의 값을 바꿀 수(접근할 수) 있는 키를 가지고 있다.
+        //외부함수 밖에서 내부함수가 호출되더라도 외부함수에 있는 지역변수 a에 접근가능한다, 이런 반환함수를 클로저라고 한다.
+        
+        var e = method2();
+        console.log(e);
+        console.log("외부함수method에 있는 지역변수값:"+e())
+        
+        //클로저를 사용하면 private으로 변수를 선언할 수 있고, getter,setter메서드를 만들어 낼 수있다.(JS에는 접근제어자가 없다.)
+
+        function test(){
+            var _name = "private변수"; // 변수명을 지정할때 앞에 언더바(_)를 붙이면 private변수로 사용함을 의미합니다.(약속같은 느낌)
+            
+
+            return function(name){ //setter메서드처럼 사용
+                _name = name;
+                return _name;
+            }
+        }
+
+        var setter = test();
+        console.log(setter("이순신")); //리턴의 결과자체는 함수이고 외부에서 값을 전달(결과값이 변함)
+
+    </script>
+
+</body>
+</html>
