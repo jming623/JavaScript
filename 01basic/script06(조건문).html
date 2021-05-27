@@ -10,13 +10,17 @@
     
     <script>
         
-        //1미만의 15자리에 랜덤 실수 생성
+        //1미만의 소숫점 15자리에 랜덤 실수 생성
         var a = Math.random() * 101; //js에는 (int)캐스팅이 없다. 그래서 함수를 사용
         console.log(a);
 
         //실수 -> 정수 parseInt(); 정수 -> 실수 parseFloat();
         a = parseInt(a);
         console.log(a);
+
+        b = parseFloat(a);
+        console.log(b); //실수로 바꿔주었지만 a와 똑같이 소숫점이 없이 출력됨
+
         
         //한번에 선언
         var point = parseInt(Math.random()*101);
@@ -50,6 +54,8 @@
             default : 
                 console.log("점수:",point,"점 F학점");
         }
+
+        
 
     </script>
     

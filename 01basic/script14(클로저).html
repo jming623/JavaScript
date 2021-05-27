@@ -25,7 +25,7 @@
             //JS에서는 함수안에서 새로운 함수를 선언할 수도 있다 (무한 중첩가능)
             
             var result1 = function(){
-                //이곳에서는 b함수를 사용할 수 있다.
+                //method1의 중괄호가 끝나기 전임으로 이곳에서는 b함수를 사용할 수 있다.
                 console.log(b);
             }
 
@@ -34,7 +34,8 @@
 
         var c = method1();
 
-        console.log(c); 
+        console.log(c);
+        c(); //안녕~!
 
         console.log("-----------------");
 
@@ -65,9 +66,52 @@
                 return _name;
             }
         }
-
+        //현재 test에는 function(name){_name = name; return _name; }값이 담겨있다 이는 var setter = function(name){_name = name; return _name; }과 같은 의미가 된다.
         var setter = test();
         console.log(setter("이순신")); //리턴의 결과자체는 함수이고 외부에서 값을 전달(결과값이 변함)
+
+
+        function test1(name){
+            
+            return name;
+        }
+
+        var name = test1("이순신");
+        console.log("test1실행:"+name);
+
+
+
+        function a(){
+            var name = "dd";
+
+            function b(){
+                document.write("b함수 호출");
+            }
+
+            return b;
+        }
+
+        var func1 = a();
+        console.log(func1);
+        func1();
+
+        function add(y){
+            var x = 10;
+
+           return function add1(z){
+                return x + y + z;
+            }
+
+        }
+
+        var num = add(1);
+
+        console.log(num);
+        var sum = num(2);
+        console.log(sum);
+
+        document.write(sum);
+
 
     </script>
 

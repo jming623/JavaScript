@@ -21,7 +21,7 @@
 
         console.log(data); //object타입
 
-        var result = JSON.stringify(data); //제이슨을 문자열로 변경하는 방법
+        var result = JSON.stringify(data); //제이슨을 사용하여 object타입을 문자열로 변경하는 방법
         console.log(result); //문자열 타입
 
         console.log(result.id); //현재는 문자열이라 내부에 접근할 수 없다.
@@ -31,6 +31,7 @@
 
         //단 - 문자열을 제이슨형식으로 변경할때는 엄격한 규칙을 가지는데 key , value를 ""처리여야 합니다.
         // JSON.parse('[{키:"aaa123"}]'); 에러
+        // object타입을 stringify를 통해 문자열로 바꾸면 자동으로 쌍따옴표가 처리됨. 아래처럼 문자열타입을 가진 요소를 parse로 객체화 시키려면 키값과 밸류값모두 "쌍따옴표"처리를 해주어야합니다.
         var result2 = JSON.parse('[{"키": "aaa123"}]');
         console.log(result2);
         

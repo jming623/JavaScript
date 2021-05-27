@@ -30,7 +30,7 @@
         var c = () => document.write("화살표 함수" + "<br>");
         c();
 
-        // 4. 즉시실행 함수
+        // 4. 즉시실행 함수 --선언부와 호출부가 나뉘지않는다
         (function(){
             document.write("즉시실행 함수" + "<br>")
         })();
@@ -47,17 +47,23 @@
        
         function func2(){
             console.log("2번");
-            
+                    
         }
 
         var result = func1();
-        func2(result); //??
+        func2(result); 
+        
 
         //사용이유 - 페이지에서 실행되는 초기값을 지정하거나, 초기에 순서대로 실행할 함수들을 정의하기 위해서
         (function(){
             var result1 = func1();
-            func2(result1); //??
+            func2(result1); 
         })();
+
+        //두자리 모두 사용가능(같은기능)
+        (function square(x) {
+             console.log(x*x);
+        }(2))/*(2)*/;
       
 
     </script>
