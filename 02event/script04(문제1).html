@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 1. 아래에있는 checkbox버튼을 클릭했을때 , "동의했습니다"경고창을 띄워주고, value값을 확인 -->    <!-- 인라인 -->
+    <input type="checkbox" value="1" onclick="test(this)">조항1
+    <input type="checkbox" value="2" onclick="test(this)">조항2
+    <input type="checkbox" value="3" onclick="test(this)">조항3
+    <input type="checkbox" value="4" onclick="test(this)">조항4
+
+    <script>
+        function test(a){
+            alert("동의했습니다.");
+            console.log("value값:"+a.value);
+        }
+    </script>
+
+    <hr>
+
+    <!-- 2. 확인을 눌렀을때 input태그 id에 공백여부, 기억하기에 체크여부를 확인하세요 -->
+    ID: <input type="text" id ="id">
+    기억하기: <input type="checkbox" id="remember">
+    <button type="button" id="check">확인</button>
+
+    <script>
+        var id = document.getElementById("id");
+        var remember = document.getElementById("remember");
+        var check = document.getElementById("check");
+
+
+        check.onclick= function(){
+
+            if(id.value=="" && remember.checked==false){
+                alert("id와 기억하기 값이 공백입니다.");
+            }else if(id.value==""){
+                alert("id값이 공백입니다.");
+            }else if(remember.checked==false){
+                alert("기억하기 값이 공백입니다.");
+            }           
+        }
+    </script>
+
+</body>
+</html>

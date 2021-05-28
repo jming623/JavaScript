@@ -12,9 +12,9 @@
         //함수를 이용한 객체 선언
         function Person(name){ 
 
-            this.name = name;
+            this.name = name; //자바의 this와 js의 this는 다름
             this.info = function(){
-                return "이름: " + name;
+                return "이름: " + /*this.*/name; //this를 사용할때는 사용할 this가 어떤것을 가리키는지 확인을 잘해야한다. 
             }
         }
 

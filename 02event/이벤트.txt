@@ -1,0 +1,13 @@
+이벤트 종류
+
+1. 인라인 -
+태그에 직접 onclick (onclick="(순수한 자바코드)" , 매개변수 this를 사용하면 같은 함수를 사용해도 각기다른 결과를 도출할 수 있다.) 
+innerHTML을 사용하면 button태그안에서 작성된 문자열을 불러올 수 있다.
+
+2. 기본 - 
+익명함수 기법 (button태그의 id속성값을 얻어오는 getElenmentById키워드를 사용한다.)
+getElenmentById로 얻어올때 script영역이 html영역보다 위에 선언된다면(html영역에서 아직 id값이 생성되지 않았을때) 에러가 발생
+이때 window.onload를 사용한다. (window.onload는 한페이지에 한번만 사용이 가능하다.)
+
+3. 표준 - 
+addEventListener
