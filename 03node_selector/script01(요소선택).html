@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 태그 = 엘리먼트, 엘리먼트는 노드형태를 띄고있어서 세개다 같은의미를 지칭 -->
+    <form action="">
+        
+        <input type="checkbox" name="inter" value="1">java
+        <input type="checkbox" name="inter" value="2">jsp
+        <input type="checkbox" name="inter" value="3">js
+        <input type="checkbox" name="inter" value="4">css
+        <input type="checkbox" name="inter" value="5">html
+        
+        <button type="button" id="btn1">체크박스 요소확인</button>
+
+        <hr>
+
+        <input type="radio" name="major" class="test" value="1">프로그램
+        <input type="radio" name="major" class="test" value="2">디자인
+        <input type="radio" name="major" class="test" value="3">시스템
+        <input type="radio" name="major" class="test" value="4">네트워크
+        <button type="button" id="btn2">라디오 요소확인</button>
+
+
+        <hr>
+
+        <select id="sel1">
+            <option>여름</option>
+            <option>가을</option>
+            <option>봄</option>
+            <option>겨울</option>
+        </select>
+
+        <select id="sel2">
+            <option>1분기</option>
+            <option>2분기</option>
+            <option>3분기</option>
+            <option>4분기</option>
+        </select>
+        <button type="button" id="btn3">셀렉트 요소확인1</button>
+
+    </form>
+
+    <script>
+        //btn1을 눌렀을때 name이 inter인 태그를 전부 선택
+
+        var btn1 = document.getElementById("btn1");
+        btn1.addEventListener("click",function(){
+            //name이 inter인 요소들 선택(다중)
+           var inter =  document.getElementsByName("inter");
+           console.log(inter);//배열
+           
+           for(var i = 0 ; i < inter.length ; i++){
+               console.log(inter[i].value); //배열안에 요소(value)의 값
+           }
+        });
+
+        //btn2를 눌렀을때 class가 test인 태그를 전부 선택
+        var btn2 = document.getElementById("btn2");
+        var test = document.getElementsByClassName("test");//함수안쪽에 선언되어도  결과는 같음
+
+        btn2.onclick = function(){
+            
+            for(var i = 0; i < test.length; i++){
+                console.log(test[i]); //태그전체
+                console.log(test[i].value); //.으로 태그내부 속성에 접근할 수 있음
+            }
+        }
+        
+        //
+        var btn3 = document.getElementById("btn3");
+        btn3.onclick = function(){
+            //var option = document.getElementsByTagName("option"); 
+        
+            //option을 바로가지고 나오면 서로다른 select항목에 해당된 모든 option을 다 가지고 나오게된다.(첫번째 select에 해당하는 옵션만 가지고 나오고싶어도 그렇게 할 수가 없음.)
+             
+            //이럴때는 select에 id값을 주고 id값을 통해(document.getElementById) select를 가져와서 option을 통째로 가져온다(id.getElementsByTagName)
+            var sel1 = document.getElementById("sel1"); 
+            var option = sel1.getElementsByTagName("option");//이렇게하면 sel1에 해당하는 option값 4개만 가져올 수 있음. 
+            console.log(option);
+
+            for(var i = 0 ; i < option.length; i++){
+                
+                if(option[i].selected){
+                    console.log(option[i].value+" 선택됨");
+                }else{
+                    console.log(option[i].value);
+                }
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>

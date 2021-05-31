@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="box">
+        <ul>
+            <li>안녕하세요</li>
+            <li>hello</li>
+            <li>니하오!</li>
+            <li>오하이요</li>
+        </ul>
+    </div>
+    <button type="button" id="btn1">querySelector확인</button>
+    <button type="button" id="btn2">querySelectorAll확인</button>
+
+    <script>
+        //btn을 클릭하면 querySelector를 이용해서 class명이 box인 div에 접근하여 li값들을 조회해보기
+        var btn1 = document.getElementById("btn1");
+        
+        btn1.onclick = function(){
+            //querySelector는 css문법으로 요소를 선택한다.
+            var li = document.querySelector(".box > ul > li");
+            console.log(li); //<li>안녕하세요</li>, li요소에 첫번째 값만 가져오게됨. 이는 querySelector가 단일선택자이기 때문이다.
+
+        }
+
+        var btn2 = document.getElementById("btn2");
+        
+        btn2.onclick = function(){
+            var li2 = document.querySelectorAll(".box > ul > li");
+            console.log(li2);
+
+            for(var i = 0 ; i <li2.length ; i++ ){
+                console.log(li2[i].innerHTML);
+            }
+        }
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h3>자바스크립트 카운트(인라인방식으로 하나의 함수로 처리)</h3>
+
+    <input type="number" value="0" id="result">
+
+    <button type="button" onclick="control(this)">+</button>
+    <button type="button" onclick="control(this)">-</button>
+
+    <script>
+
+        function control(a){
+
+            var result = document.getElementById("result");
+           
+            var num = parseInt(result.value);
+            var check = a.innerHTML;
+
+           if(check == "+"){
+                
+                if(num >= 10){
+                    alert("숫자는 10을 넘길 수 없습니다.");
+                }else{
+                    num+=1;
+                    result.value=num;
+                }
+                
+           }else{
+
+                if(num <= 0){
+                    alert("숫자는 0아래로 내려갈 수 없습니다.");
+                }else{
+                    num -= 1;
+                    result.value = num;
+                }
+           }
+          
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+    
+
+<body>
+    
+        <!-- 비밀번호 or 아디가 변경될때 마다 예시화면처럼 구현하세요 --> <!-- 원래 보더색은 검은색 일정글자수를 못채우면 빨간색 채우고나면 초록색 -->
+        <!-- 첫번째글자를 작성하면 4글자이하일때까지 "아이디4글자이상이거든요?"를 출력 4글자 이상이되면 글을 안보이게 처리하고 보더색을 초록색으로->
+        <!-- 비밀번호도 9글자일때까지 비밀번호는 9자이상입니다.를 출력하고 9자이상이되면 글을 안보이게 처리하고 border색을 초록색으로 변경-->
+
+        <section>
+            <form action="">
+
+                <label>아이디</label>
+                <input type="text" name="id" id="id"><br/>
+                <span class="idMsg"></span><br/>
+
+                <label>비밀번호</label>
+                <input type="password" name="pw" id="pw"><br/>
+                <span class="pwMsg"></span><br/>
+
+            </form>
+        </section>
+
+        <script>
+            var id = document.getElementById("id");
+            var pw = document.getElementById("pw");
+
+            var idMsg = document.querySelector(".idMsg");
+            var pwMsg = document.querySelector(".pwMsg");
+
+            id.onkeyup=function(){
+                if(id.value.length<4){
+                    id.style.border="2px solid red";
+                    idMsg.innerHTML="ID는 4자리 이상입니다.";
+               
+                }else{
+                    id.style.borderColor="green";
+                    idMsg.innerHTML="";
+                }
+            }
+
+            pw.onkeyup=function(){
+                if(pw.value.length<9){
+                    pw.style.border="2px solid red";
+                    pwMsg.innerHTML="PW는 9자리 이상입니다.";
+  
+                }else{
+                    pw.style.borderColor="green";                   
+                    pwMsg.innerHTML="";
+                }
+            }
+     
+
+        </script>
+
+</body>
+</html>

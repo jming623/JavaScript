@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <form action="">
+
+        <h2>CSS스타일 변경하기</h2>
+
+        <img src="img/spring.jpg" width="200" style="border: 3px solid black" alt="봄"> <br>
+
+        <select class="select">
+            <option value="img/spring.jpg">봄</option>
+            <option value="img/summer.jpg">여름</option>
+            <option value="img/autumn.jpg">가을</option>
+            <option value="img/winter.jpg">겨울</option>
+        </select>
+
+        <span>변경할 생상</span>
+        <input type="color" class="input">
+    </form>
+
+    <script>
+        //img변경
+        var img = document.querySelector("img");
+
+        var select = document.querySelectorAll(".select");
+        
+        var opt = select[0].getElementsByTagName("option");
+        
+
+        select[0].onchange= function(){
+            for(var i = 0; i < opt.length; i++){
+
+                if(opt[i].selected){
+                   img.src= opt[i].value;
+                }
+            }
+        }
+
+        //테두리색 변경
+        var input = document.getElementsByClassName("input");
+
+        input[0].onchange=function(){
+            img.style.border="3px solid"+input[0].value;
+        }
+        
+        
+       
+
+    
+       
+
+    </script>
+</body>
+</html>
