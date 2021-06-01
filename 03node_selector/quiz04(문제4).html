@@ -7,62 +7,54 @@
     <title>Document</title>
 
     <style>
-        #body{
-            background-color: white;
-            color: black;
-        }   
-
         .title{
             text-align: center;
         }
         .btn{
             text-align: center;
         }
-
+        
         .wrap{
-            width:50%;
+            border: 1px solid #888;
             margin: 0 auto;
+            width:700px;
             overflow: hidden;
-            border:1px solid #888;  
         }
 
         .inner{
-            
-            float:left; 
-            width:50%;
-            overflow: hidden;
-            padding:5px;
-            box-sizing: border-box;
+            float:left;
+            width: 50%;
+            padding: 10px;
+            box-sizing:border-box;
         }
 
-        .content{
+        .img, .content{
             border:1px solid #888;
-            padding:5px;
-            height: 200px;
-        }
-        .img{
-            border:1px solid #888;
-            height: 210px;
+            height: 300px;
         }
 
         .img > img{
             width:100%;
-            height: 210px;
+            height: 300px;
         }
 
-        .content > p , .content > a{
+        .conetent{
             width:100%;
-            font-size: 12px;
         }
 
+        .content > p , .content > u{
+            font-size: 20px;
+        }
 
-       
+        .content > u{
+            display: block;
+            margin-bottom: 15px;
+        }
     </style>
 
 </head>
-<body id="body">
-    <!-- 어둡게 밝게 버튼을 누르면 body에 background-color를 바꿈 -->
-
+<body style="background-color: white; color: black;" id="body">
+    
     <h2 class="title">style속성 활용하기</h2>
     
     <div class="btn">
@@ -71,7 +63,7 @@
     </div>
     
     <hr>
-
+    
     <div class="wrap">
         <div class="inner">
             <div class="img">
@@ -85,25 +77,22 @@
                 <u>위키백과</u>
             </div>
         </div>
-
-        <script>
-            var dark = document.getElementById("dark");
-            var light = document.getElementById("light");
-
-            var body = document.getElementById("body");
-
-            dark.onclick=function(){
-                body.style.backgroundColor="black";
-                body.style.color="white";
-            }
-
-            light.onclick=function(){
-                body.style.backgroundColor="white";
-                body.style.color="black";
-            }
-            
-        </script>
-        
     </div>
+
+    <script>
+        var dark = document.getElementById("dark");
+        var light = document.getElementById("light");
+        var body = document.getElementById("body");
+
+        dark.onclick = function(){
+            body.style.backgroundColor="black";
+            body.style.color="white";
+        }
+
+        light.onclick = function(){
+            body.style.backgroundColor="white";
+            body.style.color="black";
+        }
+    </script>
 </body>
 </html>
