@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .input3{
+            padding:0px;
+        }
+    </style>
+
+</head>
+<body>
+    
+    <h1>할일 목록 만들기</h1>
+    
+    <div class="input1">
+        <div class="inner1">
+            <input type="text" class="name" id="name" placeholder="이름을 입력해주세요.">
+            <button type="button" id="btn1">확인</button> <br>
+        </div>
+    </div>
+    
+    <div class="input2">
+        <input type="text" id="work" placeholder="당신의 할일을 적으세요">
+        <button type="button" id="btn2">확인</button> <br>
+    
+        <ul class="input3">
+
+        </ul>
+
+    </div>
+
+    <script>
+        
+        /* 이름 */
+        var btn1 = document.getElementById("btn1");
+        
+        btn1.onclick=function(){
+            var name = document.getElementById("name");
+            
+            var input1 = document.querySelector(".input1");
+            var inner1 = document.querySelector(".inner1");
+
+            inner1.style.display="none";
+
+            var b = document.createElement("b");
+            b.innerHTML=name.value+"님 환영합니다.";
+            input1.appendChild(b);
+        }
+        
+        /* 할일 */
+        var btn2 = document.getElementById("btn2");
+
+        btn2.onclick = function(){
+            var work = document.getElementById("work");
+
+            var input2 = document.querySelector(".input2");
+            var input3 = document.querySelector(".input3");
+
+            var li = document.createElement("li");
+            li.innerHTML = work.value+"<button type='button' name='delete'>X</button>";
+            li.style.listStyle="none";
+            input3.appendChild(li);
+
+            work.value="";
+        }
+
+    </script>
+</body>
+</html>

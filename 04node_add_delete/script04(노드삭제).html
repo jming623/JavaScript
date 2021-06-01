@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <ul class="list">
+
+    </ul>
+
+    <button type="button" id="add">추가하기</button>
+    <button type="button" id="remove">삭제하기</button>
+
+    <script>
+        var list = document.querySelector(".list"); //부모요소
+        
+        //추가기능
+        var add = document.getElementById("add");
+
+        add.onclick = function(){
+            var li = document.createElement("li");
+            var a = document.createElement("a");
+            a.href="##";
+            a.innerHTML="음..";
+            a.style.textDecoration="none";
+            a.style.color="black";
+
+            li.appendChild(a);
+            list.appendChild(li);
+        }
+        //삭제기능
+        var remove = document.getElementById("remove");
+
+        remove.onclick = function(){
+
+            /* console.log(list.childNodes); //해당요소에 자식요소들을 모두 탐색해주는 기능(줄바꿈도 text로 인식)
+            console.log(list.childNodes[0]); //공백문자 text
+            console.log(list.childNodes[1]); //첫번째 li
+
+            list.removeChild(list.childNodes[list.childNodes.length-1]); //이렇게하면 앞에서부터 없애는게아니라 뒤에서부터 없어질듯?
+            
+            //이렇게 가져오면 중간에 껴있는 원하지않는 text나 그외요소들을 불러올 수 있기때문에 좋지않다. */
+
+            
+            
+            //내가 이 객체?를 사용했을때 사용할 수 있는 모든 태그들을 알려주는 기능
+            console.dir(list);
+            
+               
+            if(list.children.length == 0) return; //삭제할 요소가 없다면 함수를 바로 종료시켜 에러를 일으키지 않게한다.
+
+            console.log(list.children); //공백이 있는데 공백text를 불러오지 않았다.
+            
+            console.log(list.children[0]); 
+
+            list.removeChild(list.children[0]);
+        }
+
+    </script>
+</body>
+</html>

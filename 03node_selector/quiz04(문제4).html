@@ -7,24 +7,22 @@
     <title>Document</title>
 
     <style>
-        .title{
+        .title ,.btn{
             text-align: center;
         }
-        .btn{
-            text-align: center;
-        }
-        
+
         .wrap{
             border: 1px solid #888;
             margin: 0 auto;
             width:700px;
             overflow: hidden;
+            padding:5px;
         }
 
         .inner{
             float:left;
             width: 50%;
-            padding: 10px;
+            padding: 5px;
             box-sizing:border-box;
         }
 
@@ -43,13 +41,13 @@
         }
 
         .content > p , .content > u{
+            display: block;
             font-size: 20px;
+            padding: 5px;
+            margin-top:5px;
+            margin-bottom:5px;
         }
 
-        .content > u{
-            display: block;
-            margin-bottom: 15px;
-        }
     </style>
 
 </head>
@@ -83,6 +81,8 @@
         var dark = document.getElementById("dark");
         var light = document.getElementById("light");
         var body = document.getElementById("body");
+
+        /* body태그는 document의 자식태그이다. 그럼으로 document.body로 받아와서 변수에 저장해줘도 무관하다.  */
 
         dark.onclick = function(){
             body.style.backgroundColor="black";
