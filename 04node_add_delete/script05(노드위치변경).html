@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        table{ border-spacing: 0; border-collapse:collapse;}
+        th, td, tr {border:1px solid #777; text-align: center;}
+    </style>
+
+</head>
+<body>
+
+    <table>
+        
+        <thead>
+            <tr>
+                <th>이동</th>
+                <th>번호</th>
+                <th>이름</th>
+                <th>내용</th>
+                <th>날짜</th>
+            </tr>
+        </thead>
+
+        <tbody class="tableList">
+            <tr>
+                <td>
+                    <button type="button" onclick="up(this)">↑</button>
+                    <button type="button" onclick="down(this)">↓</button>
+                </td>
+                <td>1</td>
+                <td>홍길동</td>
+                <td>안녕하세요~</td>
+                <td>2021-06-02</td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="button" onclick="up(this)">↑</button>
+                    <button type="button" onclick="down(this)">↓</button>
+                </td>
+                <td>2</td>
+                <td>이순신</td>
+                <td>HELLO</td>
+                <td>2021-05-09</td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="button" onclick="up(this)">↑</button>
+                    <button type="button" onclick="down(this)">↓</button>
+                </td>
+                <td>3</td>
+                <td>신사임당</td>
+                <td>니하오</td>
+                <td>2021-06-23</td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="button" onclick="up(this)">↑</button>
+                    <button type="button" onclick="down(this)">↓</button>
+                </td>
+                <td>4</td>
+                <td>홍길자</td>
+                <td>무야호~</td>
+                <td>2022-01-02</td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="button" onclick="up(this)">↑</button>
+                    <button type="button" onclick="down(this)">↓</button>
+                </td>
+                <td>5</td>
+                <td>로버트</td>
+                <td>뚝배기~</td>
+                <td>2021-02-02</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <script>
+        function up(node){
+            console.dir(node);
+
+            console.log(node.parentElement); //순수한 Element요소만 (기본적으로 선택)
+            console.log(node.parentNode); //text요소도 포함이 되있다면 선택
+            
+            console.log(node.nextElementSibling); //순수한 Element요소를 가져옴(다음형제 노드)
+            console.log(node.nextSibling); //text요소가 포함이되어있다면 text요소를 먼저 가져옴
+            console.log(node.previousElementSibling); //이전형제 노드 (현재는 null)
+
+            console.log(node.firstElementChild);//첫번째 자식요소 (현재는 button안에 자식태그가 없기때문에 null값)
+            console.log(node.firstChild);//첫번째 자식요소(text포함)(현재값: ↑)
+            console.log(node.lastElementChild);//마지막 자식요소 (현재는 button안에 자식태그가 없기때문에 null값)
+            console.log(node.lastChild); //마지막 자식요소 (text포함)(현재값: ↑)
+
+            console.log("===================================================================")
+            
+            var tableList = document.querySelector(".tableList");
+            //button태그에 접근해서 행노드(tr태그)까지 접근하려면 
+            var current = node.parentElement.parentElement; //parentElement한번으로 td태그에~ 두번으로 tr태그에 
+
+            console.log(current); //tr태그
+
+            //이전행(tr태그) 얻기
+            var previous = current.previousElementSibling;
+            
+            
+            //(이전노드가 없는경우에 실행을 안시키게 해준다.)
+            if(previous == null){
+                alert("첫번째 행입니다.");
+                return;
+            }
+
+            console.log(previous);
+            //부모요소.insertBefore(삽입할노드, 기준노드); //기준노드앞에 삽입노드를 이동시킨다.
+            tableList.insertBefore(current,previous); //위에 이전노드가 null일때 함수종료를 안시켜주면 첫번째행을 올렸을때 맨마지막으로 내려간다.
+            
+            //tableList에 접근해서 insertBefore를 하는 이유는 현재는 tableList에 바로하위 자식요소인 tr에 접근해야 하기 때문이고,
+            //만약 tr태그안에 td들을 서로 바꾼다고 하면 tr에 접근해서 tr.insertBefore를 써줘야한다.
+
+        }
+
+        function down(node){
+            
+            //기준노드
+            var current = node.parentElement.parentElement;
+
+            //삽입할노드
+            var next = current.nextElementSibling;
+
+            //next가 없으면 함수종료
+            if(next == null){
+                alert("마지막행입니다.");
+                return;
+            }
+
+            //부모노드
+            var tableList = document.querySelector(".tableList");
+
+            //삽입할노드를 기준노드 전으로 추가
+            tableList.insertBefore(next,current);
+            //tableList.insertAdjacentElement 는 tableList.insertBefore의 반대의 기능을 함. (보통 쓰일일이 많이없음.)
+           
+
+        }
+    </script>
+</body>
+</html>

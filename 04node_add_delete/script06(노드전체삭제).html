@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        table{ border-spacing: 0; border-collapse:collapse;}
+        th, td, tr {border:1px solid #777; text-align: center;}
+    </style>
+
+</head>
+<body>
+    <button type="button" id="deleteList">삭제</button>
+    <table>
+        
+        <thead>
+            <tr>
+                <th><input type="checkbox" class="allCheck"></th>
+                <th>번호</th>
+                <th>이름</th>
+                <th>내용</th>
+                <th>날짜</th>
+            </tr>
+        </thead>
+
+        <tbody class="tableList">
+            <tr>
+                <td>
+                    <input type="checkbox" class="check">
+                </td>
+                <td>1</td>
+                <td>홍길동</td>
+                <td>안녕하세요~</td>
+                <td>2021-06-02</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" class="check">
+                </td>
+                <td>2</td>
+                <td>이순신</td>
+                <td>HELLO</td>
+                <td>2021-05-09</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" class="check">
+                </td>
+                <td>3</td>
+                <td>신사임당</td>
+                <td>니하오</td>
+                <td>2021-06-23</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" class="check">
+                </td>
+                <td>4</td>
+                <td>홍길자</td>
+                <td>무야호~</td>
+                <td>2022-01-02</td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" class="check">
+                </td>
+                <td>5</td>
+                <td>로버트</td>
+                <td>뚝배기~</td>
+                <td>2021-02-02</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        
+        /* 전체선택기능 */
+        var allCheck = document.querySelector(".allCheck");
+        var list = document.querySelectorAll(".check");
+        
+        allCheck.onclick = function(){
+            if(allCheck.checked){
+                for(var i = 0; i < list.length ; i++){
+                    list[i].checked=true;
+                }
+            }else{
+                for(var i = 0; i < list.length ; i++){
+                    list[i].checked=false;
+                }
+            }
+        }
+
+        /* 삭제 */
+        var deleteList = document.getElementById("deleteList");
+
+        deleteList.onclick = function(){
+
+            for(var i = 0; i < list.length; i++){
+                if(list[i].checked){
+                    list[i].parentElement.parentElement.remove();
+                }
+            }
+        }
+
+
+
+
+    </script>
+</body>
+</html>

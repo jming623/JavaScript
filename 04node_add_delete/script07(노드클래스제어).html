@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <!-- 이버튼은 클래스이름 btn와 btn-default를 지니고있습니다. -->
+    <button type="button" class="btn btn-default" id="btn">으아</button>
+
+    <script>
+        var btn = document.getElementById("btn");
+        //현재 btn에는 <button type="button" class="btn" id="btn"></button> 담겨있습니다.
+        
+        console.log(btn.type);
+        console.log(btn.id);
+        console.log(btn.class); //undefined
+        //class는 예약어이이기 때문에 선택하는 방법이 따로 존재합니다. 
+
+        console.dir(btn);
+
+        //클래스이름은 className으로 얻어온다.
+        console.log(btn.className);  //btn btn-default //이렇게 얻어오면 값을 사용할때 문제가 생길 가능성이 매우 높다.
+        //이때 classList로 받아오면 인덱스번호를 통해 하나하나에 따로 접근할 수 있게된다.
+        console.log(btn.classList); 
+
+        //필요에 따라 클래스를 추가하고 삭제해야하는 경우도 생기는데 이럴때 어떻게 해줘야할까?
+
+        //콘솔창에서 classList를 보면 proto라는 항목이있는데, proto에는 눈에 안보이는 원본객체에 정의되어 있는 기능(함수)들을 보여준다.
+        
+        btn.classList.add("newBtn");//사용자 클래스를 추가
+        console.log(btn.classList); 
+
+        btn.classList.remove("newBtn");//사용자 클래스를 삭제
+        console.log(btn.classList); 
+
+        console.log(btn.classList.contains("newBtn")); //있으면 true,없으면 false
+        
+
+
+    </script>
+
+</body>
+</html>
