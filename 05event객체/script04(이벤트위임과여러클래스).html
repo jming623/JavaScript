@@ -36,7 +36,11 @@
     </section>
 
     <script>
-        var section = document.getElementById("section");
+        var section = document.getElementById("section"); 
+        //section에 이벤트를 걸면 버튼뿐만아니라 div,span에 클릭을해도 이벤트가 실행된다 그럼으로 if문을 써줘서 button태그에만 어떤 결과물이
+        //호출되게 만든다.(버튼이 아닌곳을 누를때 이벤트가 실행이 되지 않는건 아니지만 if문을 타지 않기 때문에 아무런 결과를 호출하지 않는다.)
+        
+
 
         section.onclick = function(){
             if(event.target.classList.contains("sel")){ //sel버튼이였다면

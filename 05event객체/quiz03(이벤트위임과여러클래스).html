@@ -65,13 +65,16 @@
         var tableList = document.querySelector(".tableList");
         
         tableList.onclick = function(){
-            if(event.target.classList.contains("testInfo")){
+
+            var a = event.target.classList;
+            
+            if(a.contains("testInfo")){
                 confirm("시험기본정보 페이지로 이동하시겠습니까?");
-            }else if(event.target.classList.contains("testInput")){
+            }else if(a.contains("testInput")){
                 confirm("시험출제 페이지로 이동하시겠습니까?")
-            }else if(event.target.classList.contains("testResult")){
+            }else if(a.contains("testResult")){
                 confirm("시험결과 페이지로 이동하시겠습니까?");
-            }else if(event.target.classList.contains("scoreInfo")){
+            }else if(a.contains("scoreInfo")){
                 confirm("성적관리 페이지로 이동하시겠습니까?");
             }
         }
