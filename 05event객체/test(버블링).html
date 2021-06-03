@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="d1">
+        d
+        <div class="d2">
+            dd
+            <div class="d3">
+                ddd
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var d1 = document.querySelector(".d1");
+        var d2 = document.querySelector(".d2");
+        var d3 = document.querySelector(".d3");
+
+        d1.onclick = function(){
+            alert("d1");
+            console.log(event.currentTarget);
+        };
+        d2.onclick = function(){
+            alert("d2");
+            console.log(event.currentTarget);
+        };
+        d3.onclick = function(){
+            alert("d3");
+            console.log(event.currentTarget);
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h3>이벤트위임- 부모에 이벤트태그를 걸어놓으면 자식태그한테도 자동으로 전파되는 특징입니다.</h3>
+    <ul class="parent">
+            <li>1. 홍길동</li>
+            <li>2. 이순신</li>
+            <li>3. 홍길자</li>
+            <li>4. 신사임당</li>
+            <li>5. 김유신</li>
+    </ul>
+
+    <p class="result"></p>
+
+    <script>
+        var parent = document.querySelector(".parent");
+        var result = document.querySelector(".result");
+        
+        parent.onclick = function(){
+            //이벤트 위임방식을 사용할때 부모를 클릭해도 적용되는 문제가 있습니다.
+            //이때는 자식태그를 클릭한게 아니면 종료하는 방법으로 이벤트를 종료합니다.
+                    
+            console.log(event.target.tagName); //event.target.tagName을 사용하면 li영역을 찍었는지 ul영역을 찍었는지 알려줌
+
+            console.log(event.target);//이벤트가 일어난 위치
+            console.log(event.currentTarget);//실제이벤트가 걸려있는 위치
+
+            if(event.target.tagName != "LI")return;//태그가 LI가 아니라면 이벤트를 종료
+
+            result.innerHTML = event.target.innerHTML;
+        }
+
+    </script>
+</body>
+</html>

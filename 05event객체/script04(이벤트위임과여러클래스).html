@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+       
+    </style>
+</head>
+<body>
+    <!-- 상황: 기능별로 다른 버튼들이 여러개라면? -->
+    <!-- 
+        방법
+        1.이벤트 위임방식으로 동일한 이벤트를 실행시켜주고,
+        2.해당버튼에 알맞은 클래스속성을 이용합니다. 
+     -->
+    <section id="section"> 
+        <div>
+            <span>홍길동</span>
+            <button type="button" class="btn sel">선택</button>
+            <button type="button" class="btn del">삭제</button>
+        </div>
+        <div>
+            <span>이순신</span>
+            <button type="button" class="btn sel">선택</button>
+            <button type="button" class="btn del">삭제</button>
+        </div>
+        <div>
+            <span>신사임당</span>
+            <button type="button" class="btn sel">선택</button>
+            <button type="button" class="btn del">삭제</button>
+        </div>
+    </section>
+
+    <script>
+        var section = document.getElementById("section");
+
+        section.onclick = function(){
+            if(event.target.classList.contains("sel")){ //sel버튼이였다면
+                event.target.previousElementSibling.style.color="#2E9AFE"
+                   
+            }else if(event.target.classList.contains("del")){//del버튼이였다면
+                event.target.parentElement.remove();
+            }
+        }
+    </script>
+</body>
+</html>
