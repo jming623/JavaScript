@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .toggle-menu{display:none;} /* 기본적으로 숨겨두고 active된 항목만 표시 */
+        
+        .active{
+            display:block;
+            animation:애니메이션명 0.3s ease-in-out; /* 애니메이션명 ,지속시간,  어떤형식으로 보여줄건지 */ 
+        }
+
+        .toggleList li{
+            list-style: none;
+            display: inline-block;
+            border:1px solid #777;
+            width:100px;
+            height:50px;
+            line-height: 50px;
+            text-align: center;
+        }
+
+        /* 애니메이션은 @keyframes 속성으로 선언, animation속성에서 사용합니다. */
+        
+        @keyframes 애니메이션명{
+            from{
+                opacity: 0;
+                margin-left: -50%;
+            } to {
+                opacity: 1;
+                margin-left: 0;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    
+    <div>
+        <ul class="toggleList">
+            <li data-id="#toggle1">메뉴1</li>
+            <li data-id="#toggle2">메뉴2</li>
+            <li data-id="#toggle3">메뉴3</li>
+        </ul>
+    </div>
+
+
+    <div>
+        <div class="toggle-menu" id="toggle1">내용상세1</div>
+        <div class="toggle-menu" id="toggle2">내용상세2</div>
+        <div class="toggle-menu" id="toggle3">내용상세3</div>
+    </div>
+
+    <script>
+
+        /* 
+            1. ul에 이벤트 위임을 이용해서 클릭이벤트를 걸고 클릭되는 타겟의 data-id를 얻습니다.
+            2. toggle-menu에 active속성을 반복문을 이용해서 삭제
+            3. data-id값에 알맞는 태그에 active속성을 추가.
+         */
+
+        var toggleList = document.querySelector(".toggleList");
+        toggleList.onclick = function(){
+            if(event.target.tagName!="LI")return; //li태그가 아니면 이벤트실행x
+            
+            //1    
+            var id = event.target.dataset.id; //li태그를 클릭했을때 얻어오는 data-id의 값을 id변수에 저장
+
+            //2
+            var toggleMenu = document.querySelectorAll(".toggle-menu");
+            
+            for(var i = 0; i<toggleMenu.length; i++){ //클래스명이 toggle-menu인 태그들을 for문으로 돌리며 클래스명에 active가 포함되어있다면 제거
+                if(toggleMenu[i].classList.contains("active")){ //if문은 굳이없어도됨.
+                    toggleMenu[i].classList.remove("active");
+                }
+            }
+
+            //3
+            var toggle = document.querySelector(id); //만약 첫번째 li를 클릭했다면 얻어온 id값은 #toggle1이되고 css방식으로 태그를 칮아서 toggle변수에 저장
+            
+            toggle.classList.add("active");  //토글변수 class에 active추가
+            
+        }
+    </script>
+</body>
+</html>

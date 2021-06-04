@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        //날짜 생성방법 new Date(); 날짜를 생성하는 방법은 이방법이 가장 기본적이지만 이방법 뿐만아니라 10가지정도 있다고함.
+        var date = new Date();
+        var date2 = new Date("2021-06-23"); //지정이가능
+        var date3 = new Date("2021-06-23 16:20:15");
+        var date4 = new Date(1622791352275); //밀리초를 넣어주었다.  결과: Fri Jun 04 2021 16:22:32 GMT+0900 (대한민국 표준시)
+
+        console.log(date);
+        console.log(date2);
+        console.log(date3);
+        console.log(date4);
+
+        //날짜 기준 - 년,월,일,시,분,초를 숫자형태로 얻는방법.
+        console.log(date.getFullYear());
+        console.log(date.getMonth()+1)//하나작게나옴 +1해주어야함
+        console.log(date.getDate());
+        console.log(date.getHours());
+        console.log(date.getMinutes());
+        console.log(date.getSeconds());
+        console.log(date.getTime());
+        
+        //1622791352275 시간과 객차이
+        var now = new Date();
+        var nowMillis = now.getTime();
+
+
+        var millis = 1622791352275;
+        var gap = nowMillis - millis;
+        console.log("시간갭:"+gap);
+
+        var time;
+        if(gap < 24 * 60 * 60 * 1000){ //1일 이하인 경우
+
+            if(gap < 1 * 60 * 60 * 1000){ //1시간 이전인경우
+                time = "방금전";
+                
+            }else{ //1시간이상 1일이하인경우
+                time =parseInt(gap/(1*60*60*1000))+"시간전";
+            }
+
+        }else{ //1일 이상인 경우
+            var today = new Date(millis); //여기서 밀리스 넣어주는거 이해잘 안감
+            var year = today.getFullYear();
+            var month = today.getMonth()+1;
+            var day = today.getDate();
+            var hour = today.getHours();
+            var minute = today.getMinutes();
+            var second = today.getSeconds();
+
+            time = year + "년"
+                 + (month < 10 ? "0"+month : month) + "월" 
+                 + (day < 10 ? "0"+day : day) + "일" 
+                 + (hour < 10 ? "0"+hour : hour) + "시" 
+                 + (minute < 10 ? "0"+minute : minute) + "분" 
+                 + (second < 10 ? "0"+second : second) + "초"; 
+            //이렇게 뽑으면 예를들어 1월이라치면 01월 이렇게 나와야 나중에 값을 처리할때 오류가 나지않는데 현재는 1월 이런식으로 나와서 값을 비교해서 1자리면 두자리로 바꿔주는 3항연산식을 사용해준다.
+        }
+        console.log(time);
+
+    </script>
+
+
+</body>
+</html>

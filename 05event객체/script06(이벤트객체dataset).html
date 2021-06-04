@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <ul class="nameList">
+        <li><a href="#" data-info='{"id":"kkk","age":"20"}'>홍길동</a></li> <!-- 만약 홍길동에 정보를 저장해주고싶다면?  -->
+        <li><a href="#" data-info='{"id":"jjj","age":"30"}'>이순신</a></li>
+        <!-- 주의 data-xx에 객체를 저장해주려면 나중에 문자열을 JSON.parse로 객체로 만들어 주어야 하기 때문에 키와 값을 넣을때 홀따옴표로 감싸고 안에서 쌍따옴표로 작성해준다.--> 
+        <li><a href="#" data-info='{"id":"hhh","age":"40"}'>홍길자</a></li>
+        <li><a href="#" data-info='{"id":"ggg","age":"50"}'>박찬호</a></li>
+        <li><a href="#" data-info='{"id":"fff","age":"60"}'>신사임당</a></li>
+    </ul>
+
+    <script>
+        var nameList = document.querySelector(".nameList");
+        nameList.onclick = function(){
+            
+            if(event.target.tagName != "A") return; //a태그가아니라면 종료
+ 
+            event.preventDefault(); //a태그에 고유이벤트 제거
+
+            //console.log(event.target.data-info); //href속성을 불러오는 것 처럼 불러오려 해봤지만 안됨.
+            
+            //data-xx로 저장한 속성은 stringMap형태로 만들어진 dataset의 xx값으로 저장됩니다. 
+            console.log(event.target.href); 
+            console.dir(event.target);
+            console.log(event.target.dataset);
+            console.log(event.target.dataset["info"]); //값을가져오는 방법1
+            console.log(event.target.dataset.info); //값을가져오는 방법2
+            //현재는 객체형식을 띤 문자열이니까 이걸 JSON.parse()로 객체형태로 만들어준다.
+            var data= JSON.parse(event.target.dataset.info);
+            console.log(data);  
+
+        }
+
+    </script>
+
+</body>
+</html>

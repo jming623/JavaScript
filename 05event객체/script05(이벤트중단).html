@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h3>a태그, submit의 고유이벤트 중단</h3>
+
+    <div>
+        <ul class="pageNation">
+            <li><a href="getList.board">1</a></li>
+            <li><a href="getList.board">2</a></li>
+            <li><a href="getList.board">3</a></li>
+            <li><a href="getList.board">4</a></li>
+            <li><a href="getList.board">5</a></li>
+        </ul>
+    </div>
+
+    <script>
+        var pageNation = document.querySelector(".pageNation");
+        pageNation.onclick = function(){
+            //
+            event.preventDefualt();//고유이벤트를 가진 태그의 이벤트 제거
+
+            if(event.target.tagName != "A") return; //a태그외에 다른태그들을 선택하면 return
+
+            var page = event.target.innerHTML;
+            console.log(page);
+            //a태그에 innerHTMl에 접근해서 값을 처리해주고싶은데 클릭을해도 a태그가 기본적으로 href경로로 보내주려는 기능떄문에 값을 받아올 수 없다.
+            //이럴떄 a태그에 기능을 제거한다.
+
+        }
+    </script>
+
+    <hr>
+
+    <form action="xxx" method="get">
+        <button type="submit" id="sub">서브밋</button>
+    </form>
+
+    <script>
+        var sub = document.getElementById("sub");
+        sub.onclick = function(){
+            event.preventDefault(); //submit이 가진 기본이벤트를 제거
+            console.log("submit온클릭");
+        }
+    </script>
+
+
+
+</body>
+</html>
