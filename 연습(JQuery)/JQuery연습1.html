@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        function func(){
+            createElement();
+            addAttribute();
+        }
+
+        function createElement(){
+            var critariaNode = document.getElementById("text");
+            var newNode = document.createElement("p");
+            newNode.innerHTML = "새로운단락";
+            newNode.setAttribute("id","para");
+            document.body.insertBefore(newNode,critariaNode);
+        }
+
+        function addAttribute(){
+            document.getElementById("para").setAttribute("style","color:red");
+        }
+    </script>
+</head>
+<body>
+    <h3>아직 생성되지 않은 HTML요소에 속성추가</h3>
+    <button type="button" onclick="func()">속성추가</button>
+    <p id="text"></p>
+</body>
+</html>

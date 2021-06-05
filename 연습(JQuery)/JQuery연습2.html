@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <script>
+        $(document).ready(function(){ //.ready는 바닐라JS에 window.onload와 같은기능을 함.
+            console.log($("button")); //object타입
+            console.log($("button")[0]); //<button type="button">Click해주세요.</button>
+            console.log($("button:first"));
+            console.log( $("button")[1]);
+            
+            $("button.btn1").click(function(){
+                $("P").hide(); //display: none으로 바꿔줌
+            })
+
+            $("button.btn2").click(function(){
+                $("#test1").hide(); //id가 테스트인 요소를 찾아 hide
+            })
+
+            $("button.btn3").click(function(){
+                $(".test2").css("color","red");
+            })
+            
+        })
+
+    </script>
+</head>
+<body>
+    
+    <h3>Header입니다.</h3>
+    <p id="test1">데이터 1</p>
+    <p class="test2">데이터 2</p>
+    
+    <button type="button" class="btn1">Click해주세요.(버튼1)</button>
+    <button type="button" class="btn2">Click해주세요.(버튼2)</button>
+    <button type="button" class="btn3">Click해주세요.(버튼3)</button>
+
+</body>
+</html>
