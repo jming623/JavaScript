@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h3>이벤트객체는 함수 파라미터에 첫번째 값으로 자동생성되는데 별도로 지정된 매개변수를 주었을때도 변수명event를 사용할 수 있을까?</h3>
+    
+    <ul class="list">
+        <li>1. 홍길동</li>
+        <li>2. 이순신</li>
+        <li>3. 홍길자</li>
+        <li>4. 신사임당</li>
+        <li>5. 김유신</li>
+    </ul>
+
+    <p class="result"></p>
+
+    <script>
+
+        var list = document.querySelectorAll(".list li");
+        var result = document.querySelector(".result");
+
+        for(var i = 0; i < list.length; i++){
+            
+            list[i].onclick = function(a){ 
+                console.log(event.target); 
+                console.log(a.target); 
+                console.log(a.target.innerHTML);
+                result.innerHTML += a.target.innerHTML;
+            }
+        }
+        //이렇게 넣어주니 a,와 event를 모두사용할 수 있게되었고, 
+    </script>
+
+
+</body>
+</html>

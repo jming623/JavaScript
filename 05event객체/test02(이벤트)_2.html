@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 이벤트객체는 함수 파라미터에 첫번째 값으로 자동생성되는데 파라미터를 따로 하나주면 첫번째로 받아오는 매개변수는 이벤트가 될까? 별도로 선언한 값이될까?  -->
+    <p onclick="func1(1)">여기를 클릭하세요</p>
+
+    <script>
+        function func1(event,e){
+            console.log(event);
+            console.log(e);
+            console.log(event.target);//undifined
+            console.log(e.target);//undifined
+            
+        }
+
+        /*
+        이벤트객체는 함수 파라미터에 첫번째 값으로 자동생성되는데 파라미터를 따로 하나주면 첫번째로 받아오는 매개변수는 이벤트가 될까?
+        결과:  NO  
+        별도로 선언한 값이됨
+        매개변수를 주게되면 함수내에서 event로만 event객체에 접근할 수 있다.
+        */
+
+        /* 
+            또 만약 파라미터를 받을 변수명을 event로 받게되면 파라미터로 넘어온값이 event에 저장되어 더이상 event객체에 접근할 수 없다.
+        */
+    </script>
+
+</body>
+</html>

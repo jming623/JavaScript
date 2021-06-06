@@ -28,15 +28,16 @@
         console.log(date.getHours());
         console.log(date.getMinutes());
         console.log(date.getSeconds());
-        console.log(date.getTime());
+        console.log("=====");
+        console.log(date.getTime()); //밀리초반환
         
         //1622791352275 시간과 객차이
         var now = new Date();
-        var nowMillis = now.getTime();
+        var nowMillis = now.getTime(); //현재시간기준 밀리초
 
 
-        var millis = 1622791352275;
-        var gap = nowMillis - millis;
+        var millis = 1622791352275; //이 html문서를 작성한 시간기준 밀리초
+        var gap = nowMillis - millis; //현재시간밀리초에서 - 작성시간밀리초를 = 지나간시간 밀리초
         console.log("시간갭:"+gap);
 
         var time;
@@ -50,7 +51,9 @@
             }
 
         }else{ //1일 이상인 경우
-            var today = new Date(millis); //여기서 밀리스 넣어주는거 이해잘 안감
+            console.log(parseInt(gap/(1*60*60*1000))+"시간전");
+            console.log("24시간이 지나면 문서가 작성된 날짜 호출:");
+            var today = new Date(millis); 
             var year = today.getFullYear();
             var month = today.getMonth()+1;
             var day = today.getDate();
