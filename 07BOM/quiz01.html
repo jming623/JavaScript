@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+    <style>
+
+        .main-banner{
+            background: linear-gradient(90deg,#0c151c 1.3125rem,transparent 1%) 50%,linear-gradient(#0c151c 1.3125rem,transparent 1%) 50%,#263747;
+            background-size: 1.5rem 1.5rem;
+            padding: 6rem 0;
+            color: #fff;
+            text-align: center;
+
+        }
+
+        .main-banner img{
+            animation: fadeIn 1s ease-in-out;
+            position: relative;        
+        }
+
+        @keyframes fadeIn{
+            from{
+                top:-100px;
+                opacity:0;
+            }to{
+                top: 0px;
+                opacity:1;
+            }
+        }
+
+        .basic{
+            display: none;
+        }
+
+        .active{
+            display: inline-block;
+        }
+
+    </style>
+
+<body>
+    
+    <div class="main-banner">
+        <img src="img/1.jpg" width="300" class="basic">
+        <img src="img/2.jpg" width="300" class="basic">
+        <img src="img/3.jpg" width="300" class="basic">
+        <img src="img/4.jpg" width="300" class="basic">
+    </div>
+
+    <script>
+        setInterval(active,1000);
+
+        var num = 0;
+        
+        function active(){   
+            var mainBanner = document.querySelector(".main-banner");
+            
+            //num,main-banner초기화
+            if(num==4){
+                for(var i = 0 ; i< mainBanner.children.length;i++){
+                    mainBanner.children[i].classList.remove("active");
+                    mainBanner.children[i].classList.add("basic");
+                }
+                num=0;
+                return;
+            }
+
+            //삭제및추가
+            mainBanner.children[num].classList.remove("basic");
+            mainBanner.children[num].classList.add("active");
+            
+            num++;
+
+            
+            
+        }
+    </script>
+
+</body>
+</html>

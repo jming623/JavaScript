@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body{margin:0px;}
+
+        .slide , .bgImg{width:100%;height:200px;margin:0px;padding: 0px;}
+
+        .bgImg{animation: fadeIn 0.5s linear;}
+
+        @keyframes fadeIn {
+            from{
+                opacity : 0;
+            }to{
+                opacity : 1;
+            }
+        }
+        
+    </style>
+
+</head>
+<body>
+    
+    <div class="slide">
+        <img src="img/slide1.jpg" class="bgImg">
+    </div>
+
+    <script>
+        var num = 1;
+
+        function changeImg(){
+            
+            
+            //img를 생성하고 조립
+            var img = document.createElement("img");
+            img.src="img/slide"+ ++num +".jpg";
+            img.classList.add("bgImg"); //class는 예약어라 img.class="??"으로 값을 넣을 수 없다.
+            console.log(img);
+
+            //기존이미지는 삭제한다.
+            var slide = document.querySelector(".slide");
+            slide.removeChild(slide.firstElementChild);
+
+            //새로운 이미지 추가
+            slide.appendChild(img);
+
+            //num초기화
+            if(num==4)num=0;
+        }
+
+        //1
+        (function(){
+            setInterval(changeImg,3000);
+        })();//즉시실행함수
+    </script>
+
+</body>
+</html>

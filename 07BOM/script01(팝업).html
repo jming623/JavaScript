@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 팝업창은 기존페이지 이외에 새롭게 창이 열린다. 실제로 홈페이지에 접속하면 조그맣게 뜨는 창이 팝업창이다.  -->
+    <button type="button" class="popup">새창열기</button>
+    <button type="button" class="popup2">새창열기(로컬)</button>
+
+    <script>
+        var popup = document.querySelector(".popup");
+        var popup2 = document.querySelector(".popup2");
+
+        popup.onclick = function(){
+            //window.open("https://www.naver.com",);
+            window.open("http://www.naver.com","네이버창", "width=600,height=400,left=700,top=300,location=no,scrollbars=no")
+            //뒤에옵션값은 모든요소를 한 쌍따옴표안에 선언
+        }
+
+        popup2.onclick = function(){
+            open("../06DOM/script01(form객체).html","JS(form객체)"); //window는 생략가능
+            
+        }
+
+        //현재창을 끄고싶다면 window.close(); 팝업창은 켜고 현재페이지는 끄는 기능으로 사용할 수 있다.
+    </script>
+
+</body>
+</html>

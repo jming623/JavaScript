@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setTimeout,clearTimeout</title>
+</head>
+<body>
+    <h3>5초 뒤에 타임함수가 실행되는데 이 버튼을 누르면 실행되지 않습니다.</h3>
+    <button type="button" class="stopTime">스탑</button>
+
+    <script>
+        /* var stopTime = document.querySelector(".stopTime");
+
+        var stop = setTimeout(function(){
+            alert("hello world");
+        },5000);
+
+        stopTime.onclick = function(){
+            clearTimeout(stop);
+        } */
+
+        //만약 매개변수로 들어오는 익명함수안에 메개변수를 주고싶다면 어떻게해야할까?
+        //setTimeout(test("hello world") ,3000); 이렇게 넣어준다면 실행함수를 넣어주어야하는 첫번째 매개변수 자리에 함수의 결과값을 넣어준게 되는것이다.(안되는 이유: 현잰는 결과값이 함수가아니라서)
+        //결과적으로 첫번째매개변수자리에는 함수자체가 들어가야하고, 만약 함수의 리턴값으로 함수를 돌려주게된다면 정상적으로 작동될것이다.
+        
+       
+        /* setTimeout(test("hello world") ,3000);
+
+        function test(text){
+
+            return function(){
+                alert(text);
+            }
+        } */
+
+        /* (function(text){
+            setTimeout(function(text){
+                alert(text);
+            },3000);
+        })("hello world"); //이렇게 주면 undifined가 출력됨. 
+       안되는 이유: 42라인에서 들어온 hello world값이 38라인에 text로 전달이되지만, 클로저상황때문에 39라인에 text에는 생성되지않은 값이 들어가는 격이된다.
+        */
+
+
+        /* (function(text){
+            setTimeout(function(){
+                alert(text);
+            },3000);
+        })("hello world"); //이렇게하면 제대로 동작을 하긴함.
+        //되는이유: 51라인에 헬로월드가 47라인에 들어와서 48라인에 자식 함수인 익명함수에까지 범위가 유효하기 떄문에 값을 제대로 전달받게된다.
+        */
+
+        /* for(var i = 1; i <= 4; i++){
+            
+            (function(i){
+                setTimeout(function(){
+                    alert(i);
+                }, i*1000);
+            })(i);
+        } */ 
+
+        for(var i = 1; i <= 4; i++){
+            
+            (function(i){
+                setTimeout(test(i),1000);
+
+                function test(i){
+                    
+                    return function(){
+                        alert(i);
+                    }
+                }
+            })(i);
+        } //위와 같은 의미
+
+    </script>
+
+</body>
+</html>

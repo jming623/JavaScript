@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <button type="button" class="stopInterval">인터벌중지</button>
+
+    <script>
+        //일정시간마다 반복실행 - 매개변수로는 첫번째는 실행함수 두번째는 반복실행될 시간(밀리초)
+        //setInterval(aa(),1000); // aa()이렇게 넣어주면 실행할 함수를 넣어준게아니라 aa함수의 리턴값을 넣어준게 되는거라 오류
+        var stop1 = setInterval(aa,1000); //1000밀리초는 1초 
+        
+        function aa(){
+            console.log("1");
+        }
+
+        setInterval(function(){console.log("2")},2000);//익명함수를 넣어주어도 가능
+
+        var stopInterval = document.querySelector(".stopInterval");
+        stopInterval.onclick = function(){
+            //clearInterval(중지할인터벌함수)
+            clearInterval(stop1); //현재실행되는 인터벌을 중지하는 명령어
+        }
+
+    </script>
+
+
+</body>
+</html>
