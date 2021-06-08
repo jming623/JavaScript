@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        console.dir(navigator);
+
+        console.log(navigator.appName); //브라우저이름
+        console.log(navigator.appVersion); //브라우저정보
+        console.log(navigator.userAgent); //사용자 브라우저 접속환경
+        
+        //유저의 정보에따라 서로다른 페이지를 보여준다
+
+        var browser = navigator.userAgent.toLowerCase(); //toLowerCase 문자열을 모두 소문자로 바꿔주는 명령어
+        console.log(browser.indexOf("chrome"));
+        
+        if(browser.indexOf("android") != -1){//indexOf 첫번째 검색되는문자의 위치정보를 리턴, 없으면 -1
+            alert("안드로이드환경에서 접속하셨습니다.");
+        }else if(browser.indexOf("iphone") != -1){
+            alert("아이폰환경에서 접속하셨습니다.")
+        }else if(browser.indexOf("edg")!= -1){
+            alert("마이크로엣지환경에서 접속하셨습니다.")
+        }else if(browser.indexOf("chrome") != -1){ 
+            alert("크롬환경에서 접속하셨습니다.");
+        }else if(browser.indexOf("firefox")!= -1){
+            alert("파이어폭스환경에서 접속하셨습니다.");
+        }//익스플로러 환경 처리()
+
+
+    </script>
+
+</body>
+</html>

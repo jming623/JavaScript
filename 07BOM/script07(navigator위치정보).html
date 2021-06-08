@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        //navigator.geolocation.getCurrentPosition(성공시실행할 함수,실패시실행할 함수)
+        navigator.geolocation.getCurrentPosition(function(position) { // 매개변수를 넣어주면 성공시에 첫번째로 지정한 매개변수에 성공적으로 받아온 값을 받아오게 되어있다.
+
+            console.log(position);//GeolocationPosition {coords: GeolocationCoordinates, timestamp: 1623117359213} (coords로 위치정보를 timestamp로 요청한시간 밀리초를 반환)
+            console.log(position.coords.latitude);
+            console.log(position.coords.longitude);
+        }, function(error){ //똑같이 매개변수를 넣어주면 실패시에 첫번째로 지정한 매개변수에 실패하며 받아온 값을 받아오게 되어있습니다,
+
+            alert("위치 정보를 얻는데 실패했습니다. 위치정보를 승인해 주세요.");
+            console.log(error); //GeolocationPositionError {code: 1, message: "User denied Geolocation"}
+
+        });
+
+        //위의 구문을 아래처럼 깔끔하게 작성할 수 있다.
+        
+        //성공시 실행할 콜백함수
+        function success(position){
+            console.log("접근시각:",position.timeStamp);
+            console.log("위도:",position.coords.latitude);
+            console.log("경도:",position.coords.longitude);
+        }
+        //실패시 실행할 콜백함수
+        function fail(error){
+            alert("위치 정보를 얻는데 실패했습니다. 위치정보를 승인해 주세요.");
+            console.log(error);
+        }
+
+        (function(){
+            navigator.geolocation.getCurrentPosition(success,fail);
+        })();
+    </script>
+
+</body>
+</html>

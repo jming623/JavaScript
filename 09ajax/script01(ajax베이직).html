@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <button type="button" onclick="ajax();">에이젝스요청</button>
+
+    <script>
+
+        function ajax(){
+
+            /* fetch("hi.txt").then(function(response) {
+
+                response.text().then(function(a){
+                    console.log(a);
+                });
+
+            }); */
+
+            //1. 호출을 하면 호출구문이 오랜시간이 걸릴수 있기때문에, 프로미스라는 내장객체를 반환해줍니다.
+
+            //promise는 fetch를 사용했을때, 상태결과를 반환해주는 약속된 객체
+            //프로미스는 3상태가 있는데 1. pending수행중 2. fullfilled 성공 3. reject거절
+            
+            /* var promise = fetch("hi.txt");
+            promise.then(function(){}); */
+
+            //위의 두줄을 아래처럼 한줄로 표현
+            fetch("hi.txt").then(function(){ })
+            
+            //2. then 함수는 콜백함수를 담아서 결과를 반환받는 함수. (콜백함수의 첫번째 매개변수 response를 담아주도록 약속되어있음)
+            fetch("hi.txt").then(function(response){ 
+                console.log(response); 
+                //매개변수 respose는 각종 정보들을 담아오는데 대표적으로 사용할수 있는게 status(200은성공), url이있다.
+
+                if(response.status != 200){ // 200은 성공 200이 아니라면 실패로 간주하고 return
+                    return;
+                }
+
+            })
+
+            fetch("hi.txt").then(function(response){
+                response.text().then(function(text){
+                    console.log(text);
+                });
+            })
+
+
+            //3. response안에 text() 함수는 응답데이터를 문자열의 형식으로 바꾸는 결과 - > 이결과는 다시한번 promise가 되고 다시 then을 사용해서 결과를 받을 수 있다. 
+
+
+
+            // 4. 위의 결과는 순서대로 실행되서 호출된것이아니다. 비동기적 함수는 순서대로 실행되지 않습니다.
+
+            fetch("hi.txt").then(func1);
+
+            function func1(response){
+                console.log(1);
+            }
+            console.log(2);
+        }
+
+    </script>
+
+</body>
+</html>

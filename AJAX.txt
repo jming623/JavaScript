@@ -1,0 +1,9 @@
+자바스크립트 비동기 AJAX (Asynchronous Javascript and XML)
+-웹페이지의 이동없이 필요한 데이터만 전송하는 기술
+
+일반적인 js는 동기 방식으로 순서대로 요청을 처리했었는데 AJAX는 비동기 방식으로 순서 없이 실행된다.
+
+AJAX를 사용할 수 있는방법은 대표적으로 4가지 정도가있음.
+1. HTTPXML
+2. FETCH API
+3. 

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h2>2번페이지</h2>
+    <button type="button" onclick="test();">뒤로가기</button>
+
+    <script>
+            
+            setInterval(function(){ //1초마다 로그1생성
+                console.log(1);
+            },1000);
+
+            setTimeout(function(){ //5초마다 새로고침
+                location.reload();
+            },5000);
+            
+            function test(){
+                history.go(-1); //한칸 뒤로가기 //1이면 앞으로한칸
+            }
+    </script>
+
+
+</body>
+</html>

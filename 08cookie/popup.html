@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  
+    <!-- 
+        팝업JS
+        <script src="popup.js"></script>
+     -->
+</head>
+<body>
+    
+    <div>
+        내용....
+    </div>
+
+    오늘하루 이 창을 열지않기<input type="checkbox" id="chbox">
+
+    <script>
+        var chbox = document.getElementById("chbox");
+        console.log(chbox);
+
+        chbox.onchange = function(){
+            if(chbox.checked){//체크가 되었다면
+                createCookie();
+                window.close();
+            }else{//체크가안되었다면
+                
+            }
+        }
+    </script>
+    <script src="popup.js"></script>
+
+    <!-- 선생님풀이 
+    <script>
+        var box = document.querySelector("input[type='checkbox']");
+        box.onclick = function(){
+            //쿠키생성
+            createCookie("popup", true); 
+            //팝업창 close
+            window.close();
+        }
+    </script>
+    -->
+
+</body>
+</html>
