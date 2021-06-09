@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    75694c716e6a6d693130336153527a41
+
+    <h2>서울시 강남구 공공WIFI 위치정보</h2>
+
+    <script>
+
+        //좌표값, 실제주소를 확인하세요
+
+        fetch("http://openapi.seoul.go.kr:8088/75694c716e6a6d693130336153527a41/json/TbPublicWifiInfo_GN/1/25/").then(function(response){
+            return response.json();
+        }).then(function(data){
+            console.log(data.TbPublicWifiInfo_GN.row);
+            // console.log(data.TbPublicWifiInfo_GN.row[0].LAT);
+
+            for(var i in data.TbPublicWifiInfo_GN.row){
+                console.log(i+"번째 와이파이");
+                console.log("위도:"+data.TbPublicWifiInfo_GN.row[i].LAT);
+                console.log("경도:"+data.TbPublicWifiInfo_GN.row[i].LNT);
+                console.log("주소:"+data.TbPublicWifiInfo_GN.row[i].X_SWIFI_ADRES1);
+            }
+        })
+
+        /*
+            선생님 풀이
+            function getFetch(){
+                fetch("http://openapi.seoul.go.kr:8088/75694c716e6a6d693130336153527a41/json/TbPublicWifiInfo_GN/1/1000/")
+                    .then(function(response){
+                        if(response.status != 200){
+                            alert("네트워크 오류가 발생했습니다. 다시 시도하세요!");
+                        }else{
+                            return response.json();
+                        }
+                    })
+                    .then(function(text){
+                        var list = text.TbPublicWifiInfo_GN.row;
+
+                        for(var i = 0 ; i<list.length; i++){
+                            console.log(list[i].X_SWIFI_ADRES1);
+                            console.log(list[i].X_SWIFI_ADRES1);
+                            console.log(list[i].LAT);
+                            console.log(list[i].LNT);
+                        }
+                    })
+            }
+
+            (function(){
+                getFetch();
+            })();
+        */
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- 1. 카카오 SDK로드 -->
+    <script src="../JS/kakao.js"></script>
+    <!-- 2. 카카오 초기화 -->
+    <script>
+        Kakao.init("240cdbb50d1e17f44b7dd6a503868a0b");
+        console.log(Kakao.isInitialized());
+    </script>
+</head>
+<body>
+    
+    <a id="custom-login-btn" href="javascript:loginWithKakao()">
+        <img
+          src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg"
+          width="222"
+        />
+      </a>
+      <br>
+      <button class="api-btn" onclick="kakaoLogout()">로그아웃</button>
+
+    <script>
+        //3.데모버전으로 들어가서 카카오로그인 코드 확인
+        function loginWithKakao() {
+                Kakao.Auth.login({
+                    success: function (authObj) {
+                        //access토큰 값 할당(로그인할때는 필요없지만 다른기능을 사용하려면 코드요청 후 확인받고나서 받은 토큰값을 할당받아두어야한다.)
+                        // console.log(authObj);
+                        // console.log(authObj.access_token);
+                        Kakao.Auth.setAccessToken(authObj.access_token);
+                        
+                        //아래 정의해둔 사용자정보를 받아오는 함수호출
+                        getInfo();
+                    },
+                    fail: function (err) {
+                        console.log(err);
+                    },
+                })
+            }
+
+
+            //4.어세스 토큰을 발급받고, 아래 함수를 호출시켜서 사용자 정보를 받아옴.
+            function getInfo(){
+                Kakao.API.request({
+                    url: '/v2/user/me',
+                        
+                    success: function(res) {
+                        console.log(res);
+                        //이메일, 성별, 닉네임, 프로필이미지 콘솔로그로 출력
+                        console.log(res.id);
+                        console.log(res.kakao_account.email);
+                        console.log(res.kakao_account.gender);
+                        console.log(res.properties.nickname);
+                        console.log(res.properties.profile_image);
+
+                        //..처리(바로 로그인처리를 해줄건지 아니면 정보들을 받아와서 회원가입페이지로 보내줄것인지)
+                    },
+                    fail: function(error) {
+                        alert('로그인에 실패했습니다. 관리자에게 문의하세요: ' + JSON.stringify(error))
+                    },
+                })
+            }
+
+            //5. 로그아웃기능
+            function kakaoLogout() {
+                if (!Kakao.Auth.getAccessToken()) {
+                    alert('Not logged in.');
+                    return;
+                }
+                Kakao.Auth.logout(function() {
+                alert('logout ok\naccess token -> ' + Kakao.Auth.getAccessToken());
+                })
+             }
+
+    </script>
+
+</body>
+</html>

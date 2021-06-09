@@ -4,6 +4,7 @@
 일반적인 js는 동기 방식으로 순서대로 요청을 처리했었는데 AJAX는 비동기 방식으로 순서 없이 실행된다.
 
 AJAX를 사용할 수 있는방법은 대표적으로 4가지 정도가있음.
-1. HTTPXML
-2. FETCH API
-3. 
+1. XML HTTP Request
+2. FETCH API(ES6)
+3. AXIOS라이브러리
+4. JQuery라이브러리
