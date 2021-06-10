@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #map {
+            height: 100%;
+        }
+    
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        p{
+            margin:3px;
+        }
+
+        #content{
+            border: 1px solid #777;
+            padding:10px 20px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="map"></div>
+
+    <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJVVdPzzINCNGNQeFGSK2vVV-uiPjZhl0&callback=initMap&libraries=&v=weekly"
+    async
+  ></script>
+
+    <script>
+        function initMap() {
+            /* 강남구 공영주차장 위치 및 정보 */
+            fetch("http://openapi.seoul.go.kr:8088/75694c716e6a6d693130336153527a41/json/gangnamParingInfo/1/52/")
+                .then(function(response){
+                    if(response.status!=200){
+                        alert("서버오류 발생");
+                    }else{
+                        return response.json();
+                    }
+                })
+                .then(function(jsonData){
+                    
+                    /* 구글맵 생성 */
+                    const myLatLng = { lat: 37.504449, lng: 127.048860 };
+                    
+                    const map = new google.maps.Map(document.getElementById("map"), {
+                        zoom: 14,
+                        center: myLatLng,
+                    });
+
+                    /* 마커생성 */
+                    var data = jsonData.gangnamParingInfo.row;
+
+                    console.log(data);
+
+                    for (var i = 0; i < data.length; i++) {
+                        const contentString =
+                            '<div id="content">' +
+                            '<div id="siteNotice">' +
+                            "</div>" +
+                            '<h2 id="firstHeading" class="firstHeading">'+data[i].NM+" 공영주차장" +'</h2>' +
+                            '<div id="bodyContent">' +
+                            "<p><b>"+"신주소: "+data[i].ADDR+"</b></p>"+
+                            "<p><b>"+"구주소: "+data[i].ADDR_OLD+"</b></p>"+
+                            "<p><b>운영요일: "+data[i].OPEN_DATE+"</b></p>"+
+                            "<p><b>영업시간: "+data[i].START_TM+" ~ "+data[i].END_TM+"</b></p>"+
+                            "<p><b>요금정보: "+ data[i].MONEY_INFO +"</b></p>"+
+                            "<p><b>시간권: "+data[i].BASIC_MONEY+"원/"+ data[i].TIME+"분" +"</b></p>"+
+                            "<p><b>일일권: "+data[i].ONEDAY_MONEY+"원/"+ data[i].ONEDAY_TIME+"시간" +"</b></p>"+    
+                            "</div>" +
+                            "</div>";
+                        const infowindow = new google.maps.InfoWindow({
+                            content: contentString,
+                        });
+
+
+                        const marker =new google.maps.Marker({
+                            position: { lat: parseFloat(data[i].YCODE), lng: parseFloat(data[i].XCODE) },
+                            map,
+                            title: data[i].ID,
+                        });
+
+                        marker.addListener("click", () => {
+                            infowindow.open(map, marker);
+                        });
+                    }//end for
+                })
+        }
+    </script>
+     
+
+</body>
+</html>

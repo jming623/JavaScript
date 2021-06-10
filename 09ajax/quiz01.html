@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #map {
+            height: 50%;
+            width: 50%;
+            margin: 0 auto;
+
+        }
+
+        /* Optional: Makes the sample page fill the window. */
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+
+    
+</head>
+<body>
+
+    <div id="map"></div>
+
+    
+
+    
+
+
+
+
+
+
+
+
+
+    <script>
+
+
+        var myPosition={lat:"", lng:""};
+
+        function getFetch(){
+            fetch("http://openapi.seoul.go.kr:8088/504d797a6d6c6a683532666e566174/json/gangnamParingInfo/1/100/")
+            .then(function(response){
+                if(response.status!=200){
+                    alert("서버상 문제가 발생했습니다.");
+                    return;
+                }else{
+                    return response.json();
+                }
+            })
+            .then(function(jsonData){
+                var data=jsonData.gangnamParingInfo.row;
+                console.log(data)
+
+                    //맵생성
+                const map= new google.maps.Map(document.getElementById("map"),{
+                    zoom: 6,
+                    center : myPosition
+
+                });
+                var contentString ="";
+                
+                
+                for(var i=0; i<data.length; i++){
+
+                    //마커생성
+                  var marker=  new google.maps.Marker({
+                       position:{ lat:parseFloat(data[i].YCODE), lng: parseFloat(data[i].XCODE)},
+                       map,
+                       title: data[i].ADDR + '\n'+
+                              data[i].MANAGE_NM +'\n'+
+                              data[i].MONEY_INFO,
+                              
+                       contentString: '<h2>'+data[i].NM+' 주차장</h2>' +'\n'+
+                                      '<ul>' +'\n'+
+                                      '<li> 주소 '+data[i].ADDR+'</li>'+'\n'+
+                                      '</ul>'
+      
+                    }); 
+                    
+                    console.log(marker)
+              
+                    marker.addListener("click", () => {
+                        infowindow.open(map, marker);
+    
+                    });
+                
+                  
+              
+                }
+
+                //태그 위도, 경도
+                const myLatLng={lat:myPosition.lat, lng:myPosition.lng};
+
+
+               
+            })
+         
+
+
+
+      
+                
+        }
+
+        
+
+
+        function success(position){
+
+            myPosition.lat=position.coords.latitude;
+            myPosition.lng=position.coords.longitude;
+            getFetch();
+        }
+        function fail(){
+            alert("팝업창을 해제하고 위치정보를 확인해주세요.")
+        }
+
+         // 1. 구글 맵 시작
+         function initMap() {
+
+    // ** 1 . 네이게이터로 현재 위치정보를 받는다.
+    navigator.geolocation.getCurrentPosition(success, fail);
+
+    }
+
+    </script>
+     <!-- 구글맵 sdk 호출 -->
+     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDf1mk5UIdUxniSui9TaBOiDplamlgIEbA&callback=initMap&libraries=&v=weekly"
+     async></script>
+</body>
+</html>
