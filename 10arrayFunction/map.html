@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        //map은 반환값으로 배열이 반환된다.
+        let nameList = [
+            "박준명",
+            "박수진",
+            "윤하린",
+            "김동원",
+            "이홍주"
+        ];
+
+        let data = nameList.map((item)=>{
+            return item;
+        })
+
+        document.write(data);
+        document.write("<br>");
+
+        //활용방법 객체에서 내가 필요한 정보만 출력하고 싶을때 
+        let person = [
+            {name:"박준명", age:"28", gender:"남성"},
+            {name:"박수진", age:"26", gender:"여성"},
+            {name:"윤하린", age:"31", gender:"남성"},
+            {name:"김동원", age:"31", gender:"남성"},
+            {name:"이홍주", age:"29", gender:"여성"},
+        ];
+
+        let genderList = person.map((item)=>{
+            return item.gender;
+        })
+        
+        document.write(genderList);
+        document.write("<br>");
+        
+        let m = 0;
+        let f = 0;
+
+        genderList.forEach((item)=>{      
+            if(item == "남성") m++;
+            if(item == "여성") f++;          
+        })
+
+        document.write("남성:",m,"명, ","여성:",f,"명");
+
+    </script>
+
+</body>
+</html>

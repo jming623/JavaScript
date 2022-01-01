@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        //filter() 
+        //조건식이 ture인 인덱스를 반환
+        
+        let person = [
+            {name:"박준명", age:"28", gender:"남성", use_yn:"1"},
+            {name:"박수진", age:"26", gender:"여성", use_yn:"1"},
+            {name:"윤하린", age:"31", gender:"남성", use_yn:"1"},
+            {name:"김동원", age:"31", gender:"남성", use_yn:"1"},
+            {name:"이홍주", age:"29", gender:"여성", use_yn:"1"},
+        ];
+        
+        //남성의 데이터만 출력
+        let data = person.filter( (item)=>{
+            return item.gender == "남성";
+        });
+        
+        console.log(data);
+
+        //이름이 "박"으로 시작하는 데이터만 출력
+        let data2 = person.filter((item)=>{
+            return item.name.startsWith("박");
+        });
+
+        console.log(data2);
+
+
+        //some()
+        //조건식이 하나라도 true라면 true반환
+        let data3 = person.some((item)=>{
+            return item.age < 27;
+        });
+
+        console.log(data3);//true
+
+
+        //every()
+        //조건식이 모두 true라면 true 하나라도 false라면 false반환
+        let data4 = person.every((item)=>{
+            return item.gender == "여성";
+        });
+
+        console.log(data4);
+
+        let data5 = person.every((item)=>{
+            return item.use_yn == 1;
+        });
+
+        console.log(data5);
+
+        //find()
+        //filter와 비슷하지만 조건이 ture인 첫번째 데이터만 반환
+        let data6 = person.find((item)=>{
+            return item.gender == "남성";
+        });
+
+        console.log(data6);
+
+        //findIndex()
+        //조건이 ture인 첫번째 데이터의 index반환
+        let data7 = person.findIndex((item)=>{
+            return item.name == "윤하린";
+        });
+
+        console.log(data7);
+
+    </script>
+</body>
+</html>

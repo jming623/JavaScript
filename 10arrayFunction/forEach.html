@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        //forEach는 반환값이 없다.
+
+        let nameList = [
+            "박준명",
+            "박수진",
+            "윤하린",
+            "김동원",
+            "이홍주"
+        ];
+
+        //기존 for문
+        for(let i = 0; i < nameList.length; i++){
+            document.write(nameList[i]+"</br>");
+        } 
+        document.write("<br>");
+
+        //배열함수 forEach 1
+        function printName(item){
+            document.write(item+"</br>");
+        }
+        //forEach의 매개변수로 미리 정의된 함수를 넣어준다.
+        nameList.forEach(printName);
+        document.write("<br>");
+        
+        //배열함수 forEach 2
+        //forEach의 매개변수로 익명함수를 넣어준다.
+        nameList.forEach(function(item){
+            document.write(item+"</br>");
+        })
+        document.write("<br>");
+
+        //배열함수 forEach 3
+        //forEach의 매개변수로 es6화살표 문법으로 익명함수를 넣어준다.
+        nameList.forEach((item)=>{document.write(item+"</br>")});
+        document.write("<br>");
+
+        //배열함수 forEach 4
+        //forEach의 매개변수로 들어오는 함수에는 item을받아주는 파라미터도 외에 index도 받아주는 파라미터도 쓸 수 있다.
+        nameList.forEach((item,index)=>{document.write(index,": ",item,"</br>")});
+        document.write("<br>");
+    
+    </script>
+
+</body>
+</html>
