@@ -51,7 +51,28 @@
         })
 
         document.write("남성:",m,"명, ","여성:",f,"명");
+        document.write("<br>");
 
+
+        let Array1 = [1,2,3,4]
+        
+        let NewArray1 = Array1.map((item) => {return item + 1})
+        // let NewArray2 = Array1.map((item) => item + 1)
+
+        document.write("NewArray1: "+NewArray1);
+        document.write("<br>");
+        // document.write("NewArray2: "+NewArray2);
+        // document.write("<br>");
+
+        let Array2 = [
+            {name : "사람1", age : "20세"},
+            {name : "사람2", age : "21세"},
+            {name : "사람3", age : "22세"}
+        ]
+
+        let NewArray2 = Array2.map( (item) => {return {...item, hobby : "독서" }} ) 
+        console.log(Array2);
+        console.log(NewArray2);
     </script>
 
 </body>
